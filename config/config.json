@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "moviles",
+    "password": "password",
+    "database": "lab_tour",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "test": {
+    "username": "moviles",
+    "password": "password",
+    "database": "apitest",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "moviles",
+    "password": "password",
+    "database": "apitest",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  }
+}
