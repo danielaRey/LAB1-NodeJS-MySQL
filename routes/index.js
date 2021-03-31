@@ -5,6 +5,7 @@ const tourController = require("../controllers/tourController");
 const reviewController = require("../controllers/reviewController");
 const reservacionController = require("../controllers/reservacionController");
 const favoritoController = require("../controllers/favoritoController");
+const fotoController = require("../controllers/fotoController");
 
 module.exports = (app) => {
   app.get("/api", (req, res) =>
@@ -45,4 +46,9 @@ module.exports = (app) => {
   app.post("/api/favorito/create", favoritoController.create);
   app.get("/api/favorito/list", favoritoController.list);
   app.get("/api/favorito/find/correo/:correo", favoritoController.find);
+
+  //foto
+  app.post("/api/foto/create", fotoController.create);
+  app.get("/api/foto/list", fotoController.list);
+  app.get("/api/foto/find/correo/:correo", fotoController.find);
 };
