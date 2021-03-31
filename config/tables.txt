@@ -4,4 +4,8 @@ sequelize model:create --name usuario --attributes correo:string,password:string
 
 sequelize model:create --name tour --attributes nombre:string,descripcion:string,indicacionesGenerales:string,actividadesIncluidas:string,actividadesNoIncluidas:string,duracion:string, fechaIda:dateonly,fechaVuelta:dateonly, pais:string, precio:double, categoria:string, horaInicio:time
 
-sequelize model:create --name review --attributes calificacion:string,comentario:string,estrellas:integer,tourID:integer
+sequelize model:create --name reservacion --attributes cantidad:integer,clienteIdentificacion:string,tourID:integer
+
+sequelize model:create --name review --attributes calificacion:string,comentario:string,estrellas:integer,tourID:integer, clienteIdentificacion:string
+
+sequelize model:create --name favorito --attributes esFavorito:integer,clienteIdentificacion:string,tourID:integer
