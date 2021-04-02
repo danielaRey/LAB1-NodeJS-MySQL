@@ -1,29 +1,16 @@
 "use strict";
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable("reviews", {
+    await queryInterface.createTable("favoritos", {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      calificacion: {
-        type: Sequelize.STRING,
-      },
-      comentario: {
-        type: Sequelize.STRING,
-      },
-      estrellas: {
+      esFavorito: {
         type: Sequelize.INTEGER,
-      },
-      tourID: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        references: {
-          model: "tours",
-          key: "id",
-        },
+        defaultValue: 0,
       },
       clienteIdentificacion: {
         type: Sequelize.STRING,
@@ -31,6 +18,14 @@ module.exports = {
         references: {
           model: "clientes",
           key: "identificacion",
+        },
+      },
+      tourID: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: {
+          model: "tours",
+          key: "id",
         },
       },
       createdAt: {
@@ -44,6 +39,6 @@ module.exports = {
     });
   },
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable("reviews");
+    await queryInterface.dropTable("favoritos");
   },
 };
