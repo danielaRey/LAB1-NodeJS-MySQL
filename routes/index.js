@@ -6,6 +6,7 @@ const reviewController = require("../controllers/reviewController");
 const reservacionController = require("../controllers/reservacionController");
 const favoritoController = require("../controllers/favoritoController");
 const fotoController = require("../controllers/fotoController");
+const usuario = require("../models").usuario;
 
 module.exports = (app) => {
   app.get("/api", (req, res) =>
@@ -17,7 +18,7 @@ module.exports = (app) => {
   //usuario
   app.post("/api/usuario/create", usuarioController.create);
   app.get("/api/usuario/list", usuarioController.list);
-  app.get("/api/usuario/find/correo/:correo", usuarioController.find);
+  app.get("/api/usuario/find/", usuarioController.find);
 
   //cliente
   app.post("/api/cliente/create", clienteController.create);
@@ -51,4 +52,53 @@ module.exports = (app) => {
   app.post("/api/foto/create", fotoController.create);
   app.get("/api/foto/list", fotoController.list);
   app.get("/api/foto/find/correo/:correo", fotoController.find);
+
+  // adding new user (sign-up route)
+  app.post("/api/register", function (req, res) {
+    // taking a user
+    const newuser = new usuario(req.body);
+
+    const responseUsuario = usuario.findOne({
+      where: { correo: newuser.correo },
+    });
+
+    Promise.all([responseUsuario]).then((response) => {
+      if (response[0]) {
+        return res.status(400).json({ auth: false, message: "email exits" });
+      } else {
+        return usuario
+          .create({
+            correo: req.body.correo,
+            password: req.body.password,
+            tipoUsuario: req.body.tipoUsuario,
+          })
+          .then((participacion) => res.status(200).send(participacion))
+
+          .catch((error) => res.status(400).send(error));
+      }
+    });
+  });
+
+  //login
+  app.post("/api/login", function (req, res) {
+    // taking a user
+    const newuser = new usuario(req.body);
+
+    const responseUsuario = usuario.findOne({
+      where: { correo: newuser.correo, password: newuser.password },
+    });
+
+    Promise.all([responseUsuario]).then((response) => {
+      if (response[0]) {
+        const tipoUsuario = response[0]["tipoUsuario"];
+        return res
+          .status(200)
+          .json({ tipoUsuario: tipoUsuario, token: "test123" });
+      } else {
+        return res
+          .status(400)
+          .json({ auth: false, message: "Username or password incorrectas." });
+      }
+    });
+  });
 };
