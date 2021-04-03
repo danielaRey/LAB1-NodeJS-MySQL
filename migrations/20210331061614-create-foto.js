@@ -15,6 +15,9 @@ module.exports = {
       imagen: {
         type: Sequelize.BLOB,
       },
+      pathImagen: {
+        type: Sequelize.STRING,
+      },
       tourID: {
         type: Sequelize.INTEGER,
         allowNull: false,

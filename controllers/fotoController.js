@@ -8,13 +8,14 @@ module.exports = {
         nombre: req.body.nombre,
         tourID: req.body.tourID,
         imagen: req.body.imagen,
+        pathImagen: req.body.imagen,
       })
       .then((foto) => res.status(200).send(foto))
       .catch((error) => res.status(400).send(error));
   },
   list(_, res) {
     return foto
-      .findAll({ attributes: ["imagen"] }) //attributes: ["*"]
+      .findAll({}) //attributes: ["*"] attributes: ["imagen"]
       .then((foto) => res.status(200).send(foto))
       .catch((error) => res.status(400).send(error));
   },
