@@ -91,9 +91,10 @@ module.exports = (app) => {
     Promise.all([responseUsuario]).then((response) => {
       if (response[0]) {
         const tipoUsuario = response[0]["tipoUsuario"];
+        const correo = response[0]["correo"];
         return res
           .status(200)
-          .json({ tipoUsuario: tipoUsuario, token: "test123" });
+          .json({ tipoUsuario: tipoUsuario, token: correo });
       } else {
         return res
           .status(400)
