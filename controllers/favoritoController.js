@@ -12,6 +12,22 @@ module.exports = {
       .then((favorito) => res.status(200).send(favorito))
       .catch((error) => res.status(400).send(error));
   },
+  update(req, res) {
+    return favorito
+      .update(
+        {
+          esFavorito: req.body.esFavorito,
+        },
+        {
+          where: {
+            tourID: req.body.tourID,
+            clienteIdentificacion: req.body.clienteIdentificacion,
+          },
+        }
+      )
+      .then((favorito) => res.status(200).send(favorito))
+      .catch((error) => res.status(400).send(error));
+  },
   list(_, res) {
     return favorito
       .findAll({}) //attributes: ["*"]

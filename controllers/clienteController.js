@@ -25,7 +25,7 @@ module.exports = {
     return cliente
       .findAll({
         where: {
-          identificacion: req.params.identificacion,
+          usuarioCorreo: req.params.correo,
         },
       })
       .then((cliente) => res.status(200).send(cliente))
