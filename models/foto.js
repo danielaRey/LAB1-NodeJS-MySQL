@@ -17,6 +17,7 @@ module.exports = (sequelize, DataTypes) => {
       nombre: DataTypes.STRING,
       imagen: DataTypes.BLOB,
       tourID: DataTypes.INTEGER,
+      pathImagen: DataTypes.STRING,
     },
     {
       sequelize,
