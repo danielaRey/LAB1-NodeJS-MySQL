@@ -18,7 +18,6 @@ module.exports = (sequelize, DataTypes) => {
     {
       calificacion: DataTypes.STRING,
       comentario: DataTypes.STRING,
-      estrellas: DataTypes.INTEGER,
       tourID: { type: DataTypes.INTEGER, allowNull: false },
       clienteIdentificacion: { type: DataTypes.STRING, allowNull: false },
     },
