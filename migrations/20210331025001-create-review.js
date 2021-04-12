@@ -14,9 +14,6 @@ module.exports = {
       comentario: {
         type: Sequelize.STRING,
       },
-      estrellas: {
-        type: Sequelize.INTEGER,
-      },
       tourID: {
         type: Sequelize.INTEGER,
         allowNull: false,

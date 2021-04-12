@@ -7,7 +7,6 @@ module.exports = {
       .create({
         calificacion: req.body.calificacion,
         comentario: req.body.comentario,
-        estrellas: req.body.estrellas,
         tourID: req.body.tourID,
         clienteIdentificacion: req.body.clienteIdentificacion,
       })
